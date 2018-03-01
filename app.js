@@ -8,13 +8,15 @@ const app = new express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(cors({
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  exposedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(
+  cors({
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    exposedHeaders: ['Content-Type', 'Authorization']
+  })
+);
 
 dbWrapper(mongoose.connection);
-const mongoDBUri = process.env.MONGODB_URI || `mongodb://localhost:27017/sophia`;
+const mongoDBUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/sophia';
 mongoose.connect(mongoDBUri);
 
 app.get('/', (req, res) => {
