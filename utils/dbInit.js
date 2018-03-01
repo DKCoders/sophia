@@ -1,7 +1,9 @@
-const glob = require( 'glob' )
-  , path = require( 'path' );
-glob.sync('./**/models/**/*.js').forEach( function( file ) {
-  require( path.resolve( file ) );
+/* eslint-disable no-console */
+require('./paginationPlugin');
+const glob = require('glob'),
+  path = require('path');
+glob.sync('./**/models/**/*.js').forEach(function(file) {
+  require(path.resolve(file));
 });
 module.exports = db => {
   db.on('error', () => console.log('Database connection error'));
