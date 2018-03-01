@@ -1,10 +1,10 @@
 require('dotenv').config();
-const express = require('express');
+const Express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dbWrapper = require('./utils/dbInit');
-const app = new express();
+const app = new Express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
