@@ -13,7 +13,7 @@ router.post('/login', async (req, res) => {
     const response = await userService.getQuery(find);
     if (response.data.length > 0) {
       const {password, admin, __v, ...user} = response.data[0];
-      const token = generateToken(user);
+      const token = generateToken(user, admin);
       res.header('Authorization', `JWT ${token}`).json({data: user});
     } else {
       res.json({error: 'Unauthorized'});
