@@ -1,6 +1,8 @@
 require('dotenv').config();
 const Boom = require('boom');
+const aqp = require('api-query-params');
 
+const convertQuery = query => (query ? aqp(query, {skipKey: 'offset'}) : {});
 const parseQuery = (query, maxLimit) => {
   let find = {};
   const options = {};
@@ -50,6 +52,7 @@ const errorMiddleware = (req, res, next) => {
 };
 
 module.exports = {
+  convertQuery,
   parseQuery,
   mapResponse,
   responder,

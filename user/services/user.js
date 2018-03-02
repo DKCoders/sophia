@@ -9,7 +9,8 @@ class UserService {
     if (additional) {
       Object.assign(find, additional);
     }
-    return mapResponse('docs', await User.paginate(find, options));
+    const users = await User.paginate(find, options);
+    return mapResponse('docs', users);
   }
 
   static async getById(userId) {
