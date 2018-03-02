@@ -1,21 +1,28 @@
 require('dotenv').config();
-const express = require('express');
+const Express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dbWrapper = require('./utils/dbInit');
-const app = new express();
+const generateRoutes = require('./config/routesConfig');
+const {errorMiddleware} = require('./utils/helpers');
+const app = new Express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(cors({
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  exposedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(
+  cors({
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    exposedHeaders: ['Content-Type', 'Authorization']
+  })
+);
+app.use(errorMiddleware);
 
 dbWrapper(mongoose.connection);
-const mongoDBUri = process.env.MONGODB_URI || `mongodb://localhost:27017/sophia`;
+const mongoDBUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/sophia';
 mongoose.connect(mongoDBUri);
+
+generateRoutes(app);
 
 app.get('/', (req, res) => {
   res.json({hello: ' World'});
