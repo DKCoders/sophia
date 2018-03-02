@@ -17,6 +17,11 @@ class UserService {
     return mapResponse('document', {document});
   }
 
+  static async getQuery(find, options) {
+    const result = await User.paginate(find, options);
+    return mapResponse('docs', result);
+  }
+
   static async create(user) {
     const document = await User.create(user);
     return mapResponse('document', {document});
@@ -24,9 +29,7 @@ class UserService {
 
   static async updateById(userId, user, overwrite = false) {
     const document = await User.findByIdAndUpdate(userId, user, {overwrite, new: true});
-    const doc = !document 
-      ? null 
-      : await User.findByIdAndUpdate(userId, {'audit._updatedAt': new Date()}, {new: true});
+    const doc = !document ? null : await User.findByIdAndUpdate(userId, {'audit._updatedAt': new Date()}, {new: true});
     return mapResponse('doc', {doc});
   }
 
@@ -34,13 +37,13 @@ class UserService {
     body.$set = body.$set || {};
     body.$setOnInsert = body.$setOnInsert || {};
     Object.assign(body.$set, {
-        'audit._updatedAt': new Date()
+      'audit._updatedAt': new Date()
     });
     return {
-        data: {},
-        meta: await User.update(query, body, options)
+      data: {},
+      meta: await User.update(query, body, options)
     };
-}
+  }
 }
 
 module.exports = UserService;
