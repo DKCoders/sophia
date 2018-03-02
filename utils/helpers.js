@@ -1,3 +1,6 @@
+require('dotenv').config();
+const Boom = require('boom');
+
 const parseQuery = (query, maxLimit) => {
   let find = {};
   const options = {};
@@ -24,7 +27,31 @@ const mapResponse = (dataKey, results) => {
   return response;
 };
 
+const responder = func => async (req, res, next) => {
+  try {
+    res.json(await func(req, res, next));
+  } catch (err) {
+    res.error(err);
+  }
+};
+
+const errorMiddleware = (req, res, next) => {
+  res.error = err => {
+    if (!err.isBoom) {
+      if (err.error && err.error.statusCode) {
+        err = Boom.create(err.error.statusCode, err.error.message);
+      } else {
+        err = Boom.badRequest(err);
+      }
+    }
+    res.status(err.output.statusCode).json(err.output.payload);
+  };
+  next();
+};
+
 module.exports = {
   parseQuery,
-  mapResponse
+  mapResponse,
+  responder,
+  errorMiddleware
 };
