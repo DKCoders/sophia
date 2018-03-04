@@ -59,7 +59,7 @@ router.delete(
     }
     const id = req.params.id;
     const $set = {'audit._deletedAt': new Date(), 'audit._deletedBy': req.user._id}
-    return brandService.updateById(id, {$set});
+    return brandService.updateById(id, {$set}, req.user._id);
   })
 );
 router.delete(
@@ -69,7 +69,7 @@ router.delete(
       throw Boom.unauthorized('Not enough privileges');
     }
     const id = req.params.id;
-    return brandService.updateById(id, {$unset: {'audit._deletedAt': '', 'audit._deletedBy': ''}});
+    return brandService.updateById(id, {$unset: {'audit._deletedAt': '', 'audit._deletedBy': ''}}, req.user._id);
   })
 );
 
