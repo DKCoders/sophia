@@ -23,22 +23,24 @@ class BrandService {
     return mapResponse('docs', result);
   }
 
-  static async create(brand) {
+  static async create(brand, userId) {
+    brand.audit = {_createdBy: userId, _createdAt: new Date()};
     const document = await Brand.create(brand);
     return mapResponse('document', {document});
   }
 
-  static async updateById(brandId, brand, overwrite = false) {
+  static async updateById(brandId, brand, userId, overwrite = false) {
     const document = await Brand.findByIdAndUpdate(brandId, brand, {overwrite, new: true});
-    const doc = !document ? null : await Brand.findByIdAndUpdate(brandId, {'audit._updatedAt': new Date()}, {new: true});
+    const doc = !document ? null : await Brand.findByIdAndUpdate(brandId, {'audit._updatedAt': new Date(), 'audit._updatedBy': userId}, {new: true});
     return mapResponse('doc', {doc});
   }
 
-  static async update(query, body, options) {
+  static async update(query, body, options, userId) {
     body.$set = body.$set || {};
     body.$setOnInsert = body.$setOnInsert || {};
     Object.assign(body.$set, {
-      'audit._updatedAt': new Date()
+      'audit._updatedAt': new Date(),
+      'audit._updatedBy': userId
     });
     return {
       data: {},

@@ -23,8 +23,10 @@ const jwtMiddleware = (req, res, next) => {
   }
 };
 
+const isAdmin = req => req.user && req.user.isAdmin;
+
 const adminRequiredMiddleware = (req, res, next) => {
-  if (!req.user || !req.user.isAdmin) {
+  if (!isAdmin(req)) {
     res.error(Boom.unauthorized('Not enough privileges'));
   }
   next();
@@ -33,5 +35,6 @@ const adminRequiredMiddleware = (req, res, next) => {
 module.exports = {
   generateToken,
   jwtMiddleware,
-  adminRequiredMiddleware
+  adminRequiredMiddleware,
+  isAdmin
 };
