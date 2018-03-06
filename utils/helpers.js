@@ -14,7 +14,11 @@ const parseQuery = (query, maxLimit) => {
       find.populate = undefined;
     }
     options.sort = query.sort ? query.sort : undefined;
-    options.limit = query.limit && query.limit < maxLimit ? query.limit : maxLimit;
+    options.limit = query.limit && query.limit < maxLimit 
+      ? query.limit 
+      : query.limit === 0
+      ? 0
+      : maxLimit;
     options.offset = query.skip || 0;
     options.select = query.projection || undefined;
   }
