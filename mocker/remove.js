@@ -5,6 +5,7 @@ const User = mongoose.model('User');
 const Brand = mongoose.model('Brand');
 const Category = mongoose.model('Category');
 const Product = mongoose.model('Product');
+const Client = mongoose.model('Client');
 
 const remove = async () => {
   const mongoDBUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/sophia';
@@ -17,6 +18,8 @@ const remove = async () => {
   await Category.remove({});
   console.log('Removing products');
   await Product.remove({});
+  console.log('Removing clients');
+  await Client.remove({});
   process.exit(0);
 };
 

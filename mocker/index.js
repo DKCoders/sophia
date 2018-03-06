@@ -7,6 +7,7 @@ const userMocker = require('./users');
 const brandMocker = require('./brands');
 const categoryMocker = require('./categories');
 const productMocker = require('./products');
+const clientMocker = require('./clients');
 
 const main = async () => {
   const mongoDBUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/sophia';
@@ -24,6 +25,9 @@ const main = async () => {
   const products = await Promise.all([...Array(50)].map(() => 
     productMocker.generateRandomProduct(randomElement(brandIds), randomElement(categoryIds), admin._id)));
   console.log(`${products.length} Products created`);
+  const userIds = [admin._id, ...users.map(user => user._id)];
+  const clients = await Promise.all([...Array(20)].map(() => clientMocker.generateRandomClient(randomElement(userIds))));
+  console.log(`${clients.length} Clients created`);
   process.exit(0);
 };
 
