@@ -16,7 +16,7 @@ const generateRandomClient = _createdBy => {
     .join('')
     .toUpperCase();
   const {streetAddress, city, country} = faker.address;
-  const address = `${streetAddress}, ${city}, ${country}`;
+  const address = `${streetAddress()}, ${city()}, ${country()}`;
   const phones = [...Array(faker.random.number(3))]
     .map(() => ({type: faker.random.word(), number: faker.phone.phoneNumber()}));
   const emails = [...Array(faker.random.number(3))]
