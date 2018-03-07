@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 const auditSchema = new Schema(
   {
     _createdAt: {type: Date, required: true, default: Date.now},
-    _createdBy: {type: Schema.Types.ObjectId, ref: 'User'},
+    _createdBy: {type: Schema.Types.ObjectId},
     _updatedAt: {type: Date},
-    _updatedBy: {type: Schema.Types.ObjectId, ref: 'User'},
+    _updatedBy: {type: Schema.Types.ObjectId},
     _deletedAt: {type: Date},
-    _deletedBy: {type: Schema.Types.ObjectId, ref: 'User'}
+    _deletedBy: {type: Schema.Types.ObjectId}
   },
   {_id: false}
 );

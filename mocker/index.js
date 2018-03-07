@@ -1,13 +1,14 @@
 /* eslint-disable no-console */
 require('dotenv').config();
 const mongoose = require('mongoose');
-const {random: {arrayElement: randomElement}} = require('faker');
+const {random: {arrayElement: randomElement, number}} = require('faker');
 require('../utils/dbInit');
 const userMocker = require('./users');
 const brandMocker = require('./brands');
 const categoryMocker = require('./categories');
 const productMocker = require('./products');
 const clientMocker = require('./clients');
+const orderMocker = require('./orders');
 
 const main = async () => {
   const mongoDBUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/sophia';
@@ -28,6 +29,15 @@ const main = async () => {
   const userIds = [admin._id, ...users.map(user => user._id)];
   const clients = await Promise.all([...Array(20)].map(() => clientMocker.generateRandomClient(randomElement(userIds))));
   console.log(`${clients.length} Clients created`);
+  const orders = await Promise.all([...Array(10)].map(
+    () => 
+    orderMocker.generateRandomOrder(
+      randomElement(userIds),
+      randomElement(clients)._id,
+      [...Array(number(7) + 1)].map(() => randomElement(products))
+    )
+  ));
+  console.log(`${orders.length} Orders created`);
   process.exit(0);
 };
 
