@@ -3,6 +3,7 @@ const users = require('../user/routes/users');
 const brands = require('../brand/routes/brands');
 const categories = require('../category/routes/categories');
 const products = require('../product/routes/products');
+const clients = require('../client/routes/clients');
 
 const generateRoutes = app => {
   // User routes
@@ -11,6 +12,7 @@ const generateRoutes = app => {
   app.use('/brands', brands);
   app.use('/categories', categories);
   app.use('/products', products);
+  app.use('/clients', clients);
 };
 
 module.exports = generateRoutes;
