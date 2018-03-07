@@ -4,6 +4,7 @@ const brands = require('../brand/routes/brands');
 const categories = require('../category/routes/categories');
 const products = require('../product/routes/products');
 const clients = require('../client/routes/clients');
+const orders = require('../order/routes/orders');
 
 const generateRoutes = app => {
   // User routes
@@ -13,6 +14,7 @@ const generateRoutes = app => {
   app.use('/categories', categories);
   app.use('/products', products);
   app.use('/clients', clients);
+  app.use('/orders', orders);
 };
 
 module.exports = generateRoutes;
