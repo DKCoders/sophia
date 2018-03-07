@@ -1,3 +1,6 @@
+/*
+* Created by Alexys Gonzalez (DK) - DKCoders
+*/
 require('dotenv').config();
 const Express = require('express');
 const cors = require('cors');
@@ -24,11 +27,7 @@ mongoose.connect(mongoDBUri);
 
 generateRoutes(app);
 
-app.get('/', (req, res) => {
-  res.json({hello: ' World'});
-});
-
 const port = process.env.PORT || 5000;
 app.listen(port, function() {
-  console.log('Node app is running on port', port);
+  console.log('Sophia is running on port', port);
 });
