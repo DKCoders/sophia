@@ -11,7 +11,7 @@ const jwtMiddleware = (req, res, next) => {
     res.error(Boom.unauthorized('Unauthorized'));
   }
   const token = authorization.split(' ');
-  if (token[0] !== 'JWT') {
+  if (token[0] !== 'Bearer') {
     res.error('Invalid token');
   }
   try {
