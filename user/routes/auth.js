@@ -14,7 +14,7 @@ router.post('/login', async (req, res) => {
     if (response.data.length > 0) {
       const {password, admin, __v, ...user} = response.data[0];
       const token = generateToken(user, admin);
-      res.header('Authorization', `JWT ${token}`).json({data: user});
+      res.header('Authorization', `Bearer ${token}`).json({data: user});
     } else {
       res.json({error: 'Unauthorized'});
     }
