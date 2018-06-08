@@ -1,6 +1,6 @@
 {
   "name": "sophia",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Project Sophia: an open source, product list and order manager application",
   "main": "app.js",
   "scripts": {
