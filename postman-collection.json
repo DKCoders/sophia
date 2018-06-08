@@ -1,0 +1,1239 @@
+{
+	"info": {
+		"name": "Sophia",
+		"_postman_id": "1c82fb44-55f3-442b-9ac1-4354d245c87b",
+		"description": "Sophia End Points",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"description": null,
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"12345\"\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}auth/login",
+							"host": [
+								"{{sophia-api}}auth"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d6e708e5-e38b-4956-91aa-c8270019487c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b27f3964-7d34-4a3a-936d-eea75c301e61",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "users",
+			"description": null,
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{sophia-api}}users/",
+							"host": [
+								"{{sophia-api}}users"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{sophia-api}}users/5b1a0335094fa2183c5a0cc4",
+							"host": [
+								"{{sophia-api}}users"
+							],
+							"path": [
+								"5b1a0335094fa2183c5a0cc4"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"test\",\n  \"email\": \"test@test.com\",\n  \"password\": \"12345\",\n  \"name\": \"Test Name\",\n  \"admin\": false\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}users/",
+							"host": [
+								"{{sophia-api}}users"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Test Name Patch\"\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}users/5b1a0335094fa2183c5a0cc4",
+							"host": [
+								"{{sophia-api}}users"
+							],
+							"path": [
+								"5b1a0335094fa2183c5a0cc4"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"test\",\n  \"email\": \"test@test.com\",\n  \"name\": \"Test Name Edit\",\n  \"admin\": false\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}users/5b1a0335094fa2183c5a0cc4",
+							"host": [
+								"{{sophia-api}}users"
+							],
+							"path": [
+								"5b1a0335094fa2183c5a0cc4"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "restore",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{sophia-api}}users/5b1a0335094fa2183c5a0cc4/restore",
+							"host": [
+								"{{sophia-api}}users"
+							],
+							"path": [
+								"5b1a0335094fa2183c5a0cc4",
+								"restore"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{sophia-api}}users/5b1a0335094fa2183c5a0cc4",
+							"host": [
+								"{{sophia-api}}users"
+							],
+							"path": [
+								"5b1a0335094fa2183c5a0cc4"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e24ac400-d67e-4057-96c3-bca44d6bd75e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "4075058e-7893-45ef-bae8-95d2d16726f3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "brands",
+			"description": "",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{sophia-api}}brands/",
+							"host": [
+								"{{sophia-api}}brands"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{sophia-api}}brands/5b1a8b7d29cfa62210d4d765",
+							"host": [
+								"{{sophia-api}}brands"
+							],
+							"path": [
+								"5b1a8b7d29cfa62210d4d765"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"code\": \"TEST\",\n  \"name\": \"Test Brand Name\",\n  \"description\": \"my description\",\n  \"logo\": \"logo-test-url\",\n  \"origin\": \"National\"\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}brands/",
+							"host": [
+								"{{sophia-api}}brands"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"code\": \"TEST\",\n  \"name\": \"Test Brand Name Edit\",\n  \"description\": \"my description\",\n  \"logo\": \"logo-test-url\",\n  \"origin\": \"National\"\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}brands/5b1a911b851c6d25cb51b99c",
+							"host": [
+								"{{sophia-api}}brands"
+							],
+							"path": [
+								"5b1a911b851c6d25cb51b99c"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"my patched description\"\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}brands/5b1a911b851c6d25cb51b99c",
+							"host": [
+								"{{sophia-api}}brands"
+							],
+							"path": [
+								"5b1a911b851c6d25cb51b99c"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{sophia-api}}brands/5b1a911b851c6d25cb51b99c",
+							"host": [
+								"{{sophia-api}}brands"
+							],
+							"path": [
+								"5b1a911b851c6d25cb51b99c"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "restore",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{sophia-api}}brands/5b1a911b851c6d25cb51b99c/restore",
+							"host": [
+								"{{sophia-api}}brands"
+							],
+							"path": [
+								"5b1a911b851c6d25cb51b99c",
+								"restore"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"description": "",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{sophia-api}}categories/",
+							"host": [
+								"{{sophia-api}}categories"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{sophia-api}}categories/5b1a8b7d29cfa62210d4d76f",
+							"host": [
+								"{{sophia-api}}categories"
+							],
+							"path": [
+								"5b1a8b7d29cfa62210d4d76f"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"code\": \"TEST\",\n  \"name\": \"Test Name\",\n  \"description\": \"my description\",\n  \"img\": \"img-test-url\"\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}categories/",
+							"host": [
+								"{{sophia-api}}categories"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"code\": \"TEST\",\n  \"name\": \"Test Name Edit\",\n  \"description\": \"my description\",\n  \"img\": \"img-test-url\"\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}categories/5b1a9667851c6d25cb51b99d",
+							"host": [
+								"{{sophia-api}}categories"
+							],
+							"path": [
+								"5b1a9667851c6d25cb51b99d"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"my patched description\"\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}categories/5b1a9667851c6d25cb51b99d",
+							"host": [
+								"{{sophia-api}}categories"
+							],
+							"path": [
+								"5b1a9667851c6d25cb51b99d"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{sophia-api}}categories/5b1a9667851c6d25cb51b99d",
+							"host": [
+								"{{sophia-api}}categories"
+							],
+							"path": [
+								"5b1a9667851c6d25cb51b99d"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "restore",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{sophia-api}}categories/5b1a9667851c6d25cb51b99d/restore",
+							"host": [
+								"{{sophia-api}}categories"
+							],
+							"path": [
+								"5b1a9667851c6d25cb51b99d",
+								"restore"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"description": "",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{sophia-api}}products/",
+							"host": [
+								"{{sophia-api}}products"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{sophia-api}}products/5b1a8b7d29cfa62210d4d77a",
+							"host": [
+								"{{sophia-api}}products"
+							],
+							"path": [
+								"5b1a8b7d29cfa62210d4d77a"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"code\": \"TEST\",\n    \"name\": \"Test namen\",\n    \"description\": \"description.\",\n    \"imgs\": [\"test-img-url\"],\n    \"brand\": \"5b1a8b7d29cfa62210d4d769\",\n    \"category\": \"5b1a8b7d29cfa62210d4d773\",\n    \"price\": 274\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}products/",
+							"host": [
+								"{{sophia-api}}products"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"code\": \"TEST\",\n    \"name\": \"Test namen\",\n    \"description\": \"description edit.\",\n    \"imgs\": [\"test-img-url\"],\n    \"brand\": \"5b1a8b7d29cfa62210d4d769\",\n    \"category\": \"5b1a8b7d29cfa62210d4d773\",\n    \"price\": 274\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}products/5b1aa810851c6d25cb51b99f",
+							"host": [
+								"{{sophia-api}}products"
+							],
+							"path": [
+								"5b1aa810851c6d25cb51b99f"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"my patched description\"\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}products/5b1aa810851c6d25cb51b99f",
+							"host": [
+								"{{sophia-api}}products"
+							],
+							"path": [
+								"5b1aa810851c6d25cb51b99f"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{sophia-api}}products/5b1aa810851c6d25cb51b99f",
+							"host": [
+								"{{sophia-api}}products"
+							],
+							"path": [
+								"5b1aa810851c6d25cb51b99f"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "restore",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{sophia-api}}products/5b1aa810851c6d25cb51b99f/restore",
+							"host": [
+								"{{sophia-api}}products"
+							],
+							"path": [
+								"5b1aa810851c6d25cb51b99f",
+								"restore"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "clients",
+			"description": "",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{sophia-api}}clients/",
+							"host": [
+								"{{sophia-api}}clients"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{sophia-api}}clients/5b1a8b7d29cfa62210d4d7ab",
+							"host": [
+								"{{sophia-api}}clients"
+							],
+							"path": [
+								"5b1a8b7d29cfa62210d4d7ab"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"phones\": [\n        {\n            \"type\": \"test\",\n            \"number\": \"1-887-209-2777\"\n        }\n    ],\n    \"emails\": [],\n    \"contacts\": [\n        {\n            \"name\": \"Albert Lemke V\",\n            \"phone\": \"048-601-8850\",\n            \"email\": \"burdette.bins46@yahoo.com\"\n        }\n    ],\n    \"imgs\": [\n        \"Sudan\"\n    ],\n    \"verified\": false,\n    \"code\": \"TEST\",\n    \"name\": \"Volkman, Hagenes and Rempel\",\n    \"taxId\": \"TESTTAX\",\n    \"address\": \"601 Price Turnpike, North Wilhelminehaven, Kenya\",\n    \"logo\": \"http://lorempixel.com/640/480/technics\"\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}clients/",
+							"host": [
+								"{{sophia-api}}clients"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"phones\": [\n        {\n            \"type\": \"test\",\n            \"number\": \"1-887-209-2777\"\n        }\n    ],\n    \"emails\": [],\n    \"contacts\": [\n        {\n            \"name\": \"Albert Lemke V\",\n            \"phone\": \"048-601-8850\",\n            \"email\": \"burdette.bins46@yahoo.com\"\n        }\n    ],\n    \"imgs\": [\n        \"Sudan\"\n    ],\n    \"verified\": false,\n    \"code\": \"TEST\",\n    \"name\": \"Volkman, Hagenes and Rempe edit\",\n    \"taxId\": \"TESTTAX\",\n    \"address\": \"601 Price Turnpike, North Wilhelminehaven, Kenya\",\n    \"logo\": \"http://lorempixel.com/640/480/technics\"\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}clients/5b1ab4b9851c6d25cb51b9a1",
+							"host": [
+								"{{sophia-api}}clients"
+							],
+							"path": [
+								"5b1ab4b9851c6d25cb51b9a1"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"patched name\"\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}clients/5b1ab4b9851c6d25cb51b9a1",
+							"host": [
+								"{{sophia-api}}clients"
+							],
+							"path": [
+								"5b1ab4b9851c6d25cb51b9a1"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{sophia-api}}clients/5b1ab4b9851c6d25cb51b9a1",
+							"host": [
+								"{{sophia-api}}clients"
+							],
+							"path": [
+								"5b1ab4b9851c6d25cb51b9a1"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "restore",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{sophia-api}}clients/5b1ab4b9851c6d25cb51b9a1/restore",
+							"host": [
+								"{{sophia-api}}clients"
+							],
+							"path": [
+								"5b1ab4b9851c6d25cb51b9a1",
+								"restore"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f278fba1-eea2-4124-aa41-2bef9f9aa0d7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bc047b58-773f-4f07-a276-03cf6777ed63",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"description": "",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{sophia-api}}orders/",
+							"host": [
+								"{{sophia-api}}orders"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "getOne",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{sophia-api}}orders/5b1a8b7d29cfa62210d4d7ce",
+							"host": [
+								"{{sophia-api}}orders"
+							],
+							"path": [
+								"5b1a8b7d29cfa62210d4d7ce"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"date\": \"2018-06-08T13:58:21.711Z\",\n        \"items\": [\n            {\n                \"price\": 201,\n                \"quantity\": 6,\n                \"product\": \"5b1a8b7d29cfa62210d4d789\"\n            },\n            {\n                \"price\": 314,\n                \"quantity\": 8,\n                \"product\": \"5b1a8b7d29cfa62210d4d780\"\n            },\n            {\n                \"price\": 693,\n                \"quantity\": 1,\n                \"product\": \"5b1a8b7d29cfa62210d4d795\"\n            }\n        ],\n        \"modifiers\": [\n            {\n                \"value\": -0.29,\n                \"description\": \"hacking\"\n            },\n            {\n                \"value\": 0.5,\n                \"description\": \"Orchard Security\"\n            }\n        ],\n        \"code\": \"CODE\",\n        \"owner\": \"5b1a8b7d29cfa62210d4d75f\",\n        \"client\": \"5b1a8b7d29cfa62210d4d7ac\",\n        \"notes\": \"Et odio cum quis non. Ullam ducimus aliquam sunt et rerum ab. Est harum qui ratione unde. Repellendus soluta harum nemo autem esse veniam sit dolorem.\"\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}orders/",
+							"host": [
+								"{{sophia-api}}orders"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"date\": \"2018-06-08T13:58:21.711Z\",\n        \"items\": [\n            {\n                \"price\": 201,\n                \"quantity\": 6,\n                \"product\": \"5b1a8b7d29cfa62210d4d789\"\n            },\n            {\n                \"price\": 314,\n                \"quantity\": 8,\n                \"product\": \"5b1a8b7d29cfa62210d4d780\"\n            },\n            {\n                \"price\": 693,\n                \"quantity\": 1,\n                \"product\": \"5b1a8b7d29cfa62210d4d795\"\n            }\n        ],\n        \"modifiers\": [\n            {\n                \"value\": -0.29,\n                \"description\": \"hacking\"\n            },\n            {\n                \"value\": 0.5,\n                \"description\": \"Orchard Security\"\n            }\n        ],\n        \"code\": \"CODE\",\n        \"owner\": \"5b1a8b7d29cfa62210d4d75f\",\n        \"client\": \"5b1a8b7d29cfa62210d4d7ac\",\n        \"notes\": \"Change\"\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}orders/5b1ab69a851c6d25cb51b9a7",
+							"host": [
+								"{{sophia-api}}orders"
+							],
+							"path": [
+								"5b1ab69a851c6d25cb51b9a7"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"notes\": \"notes\"\n}"
+						},
+						"url": {
+							"raw": "{{sophia-api}}orders/5b1ab69a851c6d25cb51b9a7",
+							"host": [
+								"{{sophia-api}}orders"
+							],
+							"path": [
+								"5b1ab69a851c6d25cb51b9a7"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{sophia-api}}orders/5b1ab69a851c6d25cb51b9a7",
+							"host": [
+								"{{sophia-api}}orders"
+							],
+							"path": [
+								"5b1ab69a851c6d25cb51b9a7"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "restore",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{sophia-api}}orders/5b1ab69a851c6d25cb51b9a7/restore",
+							"host": [
+								"{{sophia-api}}orders"
+							],
+							"path": [
+								"5b1ab69a851c6d25cb51b9a7",
+								"restore"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f278fba1-eea2-4124-aa41-2bef9f9aa0d7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bc047b58-773f-4f07-a276-03cf6777ed63",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "1db2c7f8-4d60-4e42-b7d6-d7a01ed9a118",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c6fe52f9-06b3-4da1-8c4f-36919513f795",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "2fc0155e-1ee6-4fad-b467-97acc3d81bc0",
+			"key": "sophia-api",
+			"value": "http://localhost:10100/",
+			"type": "string",
+			"description": ""
+		}
+	]
+}
