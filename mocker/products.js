@@ -2,7 +2,7 @@ const faker = require('faker');
 const mongoose = require('mongoose');
 const Product = mongoose.model('Product');
 
-const createProduct = ({code, name, description, imgs, brand, category, price, audit}) => 
+const createProduct = ({code, name, description, imgs, brand, category, price, audit}) =>
   Product.create({code, name, description, imgs, brand, category, price, audit});
 
 const generateRandomProduct = (brand, category, _createdBy) => {
@@ -12,7 +12,7 @@ const generateRandomProduct = (brand, category, _createdBy) => {
     .toUpperCase();
   const name = faker.commerce.productName();
   const description = faker.lorem.paragraph();
-  const imgs = [faker.image.food()];
+  const imgs = ['https://picsum.photos/500?random'];
   const price = parseFloat(faker.commerce.price());
   const audit = {_createdBy};
   return createProduct({code, name, description, imgs, brand, category, price, audit});
