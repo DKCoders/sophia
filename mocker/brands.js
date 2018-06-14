@@ -2,7 +2,7 @@ const faker = require('faker');
 const mongoose = require('mongoose');
 const Brand = mongoose.model('Brand');
 
-const createBrand = ({code, name, description, logo, origin, audit}) => 
+const createBrand = ({code, name, description, logo, origin, audit}) =>
   Brand.create({code, name, description, logo, origin, audit});
 
 const generateRandomBrand = _createdBy => {
@@ -12,7 +12,7 @@ const generateRandomBrand = _createdBy => {
     .toUpperCase();
   const name = faker.random.words();
   const description = faker.lorem.paragraph();
-  const logo = faker.image.technics();
+  const logo = 'https://picsum.photos/500?random';
   const origin = faker.address.country();
   const audit = {_createdBy};
   return createBrand({code, name, description, logo, origin, audit});

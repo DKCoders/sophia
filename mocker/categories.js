@@ -12,7 +12,7 @@ const generateRandomCategory = _createdBy => {
     .toUpperCase();
   const name = faker.random.words();
   const description = faker.lorem.paragraph();
-  const img = faker.image.image();
+  const img = 'https://picsum.photos/500?random';
   const audit = {_createdBy};
   return createCategory({code, name, description, img, audit});
 };
