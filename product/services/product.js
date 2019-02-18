@@ -30,8 +30,14 @@ class ProductService {
   }
 
   static async updateById(productId, product, userId, overwrite = false) {
-    const document = await Product.findByIdAndUpdate(productId, product, {overwrite, new: true});
-    const doc = !document ? null : await Product.findByIdAndUpdate(productId, {'audit._updatedAt': new Date(), 'audit._updatedBy': userId}, {new: true});
+    const document = await Product.findByIdAndUpdate(productId, product, {overwrite, new: true, runValidators: true});
+    const doc = !document
+      ? null
+      : await Product.findByIdAndUpdate(
+          productId,
+          {'audit._updatedAt': new Date(), 'audit._updatedBy': userId},
+          {new: true}
+        );
     return mapResponse('doc', {doc});
   }
 

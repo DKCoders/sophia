@@ -30,8 +30,18 @@ class CategoryService {
   }
 
   static async updateById(categoryId, category, userId, overwrite = false) {
-    const document = await Category.findByIdAndUpdate(categoryId, category, {overwrite, new: true});
-    const doc = !document ? null : await Category.findByIdAndUpdate(categoryId, {'audit._updatedAt': new Date(), 'audit._updatedBy': userId}, {new: true});
+    const document = await Category.findByIdAndUpdate(categoryId, category, {
+      overwrite,
+      new: true,
+      runValidators: true
+    });
+    const doc = !document
+      ? null
+      : await Category.findByIdAndUpdate(
+          categoryId,
+          {'audit._updatedAt': new Date(), 'audit._updatedBy': userId},
+          {new: true}
+        );
     return mapResponse('doc', {doc});
   }
 

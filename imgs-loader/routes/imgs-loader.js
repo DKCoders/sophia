@@ -7,7 +7,10 @@ router.post('/upload', (req, res) => {
     if (err) {
       res.error(err);
     }
-    res.json(file);
+    const pieces = file.split('/');
+    res.json({
+      data: pieces.pop()
+    });
   });
 });
 

@@ -29,7 +29,7 @@ class UserService {
   }
 
   static async updateById(userId, user, overwrite = false) {
-    const document = await User.findByIdAndUpdate(userId, user, {overwrite, new: true});
+    const document = await User.findByIdAndUpdate(userId, user, {overwrite, new: true, runValidators: true});
     const doc = !document ? null : await User.findByIdAndUpdate(userId, {'audit._updatedAt': new Date()}, {new: true});
     return mapResponse('doc', {doc});
   }
