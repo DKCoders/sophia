@@ -30,8 +30,14 @@ class BrandService {
   }
 
   static async updateById(brandId, brand, userId, overwrite = false) {
-    const document = await Brand.findByIdAndUpdate(brandId, brand, {overwrite, new: true});
-    const doc = !document ? null : await Brand.findByIdAndUpdate(brandId, {'audit._updatedAt': new Date(), 'audit._updatedBy': userId}, {new: true});
+    const document = await Brand.findByIdAndUpdate(brandId, brand, {overwrite, new: true, runValidators: true});
+    const doc = !document
+      ? null
+      : await Brand.findByIdAndUpdate(
+          brandId,
+          {'audit._updatedAt': new Date(), 'audit._updatedBy': userId},
+          {new: true}
+        );
     return mapResponse('doc', {doc});
   }
 

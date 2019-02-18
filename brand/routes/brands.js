@@ -8,10 +8,7 @@ const {jwtMiddleware, isAdmin} = require('../../utils/jwtHelpers');
 
 router.use(jwtMiddleware);
 
-router.get(
-  '/',
-  responder(async req => brandService.getAll(convertQuery(req._parsedUrl.query)))
-);
+router.get('/', responder(async req => brandService.getAll(convertQuery(req._parsedUrl.query))));
 router.post(
   '/',
   responder(async req => {
@@ -21,10 +18,7 @@ router.post(
     return brandService.create(req.body, req.user._id);
   })
 );
-router.get(
-  '/:id',
-  responder(async req => brandService.getById(req.params.id))
-);
+router.get('/:id', responder(async req => brandService.getById(req.params.id)));
 router.put(
   '/:id',
   responder(async req => {
@@ -58,7 +52,7 @@ router.delete(
       throw Boom.unauthorized('Not enough privileges');
     }
     const id = req.params.id;
-    const $set = {'audit._deletedAt': new Date(), 'audit._deletedBy': req.user._id}
+    const $set = {'audit._deletedAt': new Date(), 'audit._deletedBy': req.user._id};
     return brandService.updateById(id, {$set}, req.user._id);
   })
 );

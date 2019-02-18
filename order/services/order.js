@@ -30,8 +30,14 @@ class OrderService {
   }
 
   static async updateById(orderId, order, userId, overwrite = false) {
-    const document = await Order.findByIdAndUpdate(orderId, order, {overwrite, new: true});
-    const doc = !document ? null : await Order.findByIdAndUpdate(orderId, {'audit._updatedAt': new Date(), 'audit._updatedBy': userId}, {new: true});
+    const document = await Order.findByIdAndUpdate(orderId, order, {overwrite, new: true, runValidators: true});
+    const doc = !document
+      ? null
+      : await Order.findByIdAndUpdate(
+          orderId,
+          {'audit._updatedAt': new Date(), 'audit._updatedBy': userId},
+          {new: true}
+        );
     return mapResponse('doc', {doc});
   }
 

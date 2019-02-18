@@ -30,8 +30,14 @@ class ClientService {
   }
 
   static async updateById(clientId, client, userId, overwrite = false) {
-    const document = await Client.findByIdAndUpdate(clientId, client, {overwrite, new: true});
-    const doc = !document ? null : await Client.findByIdAndUpdate(clientId, {'audit._updatedAt': new Date(), 'audit._updatedBy': userId}, {new: true});
+    const document = await Client.findByIdAndUpdate(clientId, client, {overwrite, new: true, runValidators: true});
+    const doc = !document
+      ? null
+      : await Client.findByIdAndUpdate(
+          clientId,
+          {'audit._updatedAt': new Date(), 'audit._updatedBy': userId},
+          {new: true}
+        );
     return mapResponse('doc', {doc});
   }
 
